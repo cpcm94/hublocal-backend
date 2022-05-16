@@ -1,9 +1,10 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
+const { envConfig } = require('./envConfig')
 
 const app = express()
-const port = 3000
+const port = envConfig.port
 
 app.use(cors())
 app.use(bodyParser.json())
