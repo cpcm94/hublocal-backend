@@ -2,7 +2,7 @@ const dotenv = require('dotenv')
 
 dotenv.config()
 
-export const envConfig = {
+exports.envConfig = {
   postgresHost: process.env.POSTGRES_HOST,
   postgresDatabase: process.env.POSTGRES_DATABASE,
   postgresPort: process.env.POSTGRES_PORT,
