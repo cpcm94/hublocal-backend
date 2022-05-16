@@ -6,6 +6,7 @@ const app = express()
 const port = 3000
 
 app.use(cors())
+app.use(bodyParser.json())
 
 // Configuring body parser middleware
 // app.use(bodyParser.urlencoded({ extended: false }));
@@ -14,6 +15,10 @@ app.use(cors())
 // app.post('/book', (req, res) => {
 //     // We will be coding here
 // });
+
+app.get('/', (req, res) => {
+  res.send('estamos aqui')
+})
 
 app.listen(port, () =>
   console.log(`Hello world app listening on port ${port}!`)
