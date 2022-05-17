@@ -13,6 +13,7 @@ app.use(bodyParser.json())
 
 // Configuring body parser middleware
 app.use(bodyParser.urlencoded({ extended: true }))
+
 // app.use(bodyParser.json());
 
 // app.post('/book', (req, res) => {

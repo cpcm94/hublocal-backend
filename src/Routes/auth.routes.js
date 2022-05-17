@@ -3,7 +3,6 @@ const {
   checkDuplicateUsernameOrEmail,
 } = require('../Middleware/checkDuplicateUsernameOrEmail')
 const controller = require('../Controllers/auth.controller')
-
 const router = Router()
 
 router.use(function (req, res, next) {

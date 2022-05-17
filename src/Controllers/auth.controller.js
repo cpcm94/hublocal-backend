@@ -14,6 +14,7 @@ exports.signup = (req, res) => {
       res.send({ message: 'User was registered successfully!' })
     })
     .catch((err) => {
+      console.log('erro aqui', err)
       res.status(500).send({ message: err.message })
     })
 }
