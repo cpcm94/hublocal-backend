@@ -1,32 +1,31 @@
 const db = require('../Models')
 
-const Company = db.company
+const Location = db.location
 const Responsible = db.responsible
 
-exports.getCompanies = (req, res) => {
-  Company.findAll({
+exports.getLocations = (req, res) => {
+  Location.findAll({
     where: {
-      UserId: req.body.user_id,
+      CompanyId: req.body.company_id,
     },
   })
-    .then((companies) => {
-      if (!companies) {
-        return res.status(404).send({ message: 'User Not found.' })
+    .then((locations) => {
+      if (!locations) {
+        return res.status(404).send({ message: 'Locations not found' })
       }
 
-      return res.status(200).send(companies)
+      return res.status(200).send(locations)
     })
     .catch((error) => {
       res.status(500).send({ message: error.message })
     })
 }
-exports.createCompany = (req, res) => {
-  Company.create({
+exports.createLocation = (req, res) => {
+  Location.create({
     name: req.body.name,
-    CNPJ: req.body.cnpj,
-    description: req.body.description,
+    address: req.body.address,
     main_responsible: req.body.main_responsible,
-    UserId: req.body.user_id,
+    CompanyId: req.body.company_id,
   })
     .then((result) => {
       Responsible.bulkCreate(
@@ -46,45 +45,41 @@ exports.createCompany = (req, res) => {
       res.status(500).send({ message: error.message })
     })
 }
-exports.getCompany = (req, res) => {
-  Company.findOne({
+exports.getLocation = (req, res) => {
+  Location.findOne({
     where: {
-      UserId: req.body.user_id,
-      id: req.params.companyId,
+      CompanyId: req.body.company_id,
     },
     include: Responsible,
   })
-    .then((company) => {
-      if (!company) {
-        return res.status(404).send({ message: 'Company not found' })
+    .then((location) => {
+      if (!location) {
+        return res.status(404).send({ message: 'Location not found' })
       }
-      return res.status(200).send(company)
+
+      return res.status(200).send(location)
     })
     .catch((error) => {
       res.status(500).send({ message: error.message })
     })
 }
-exports.deleteCompany = (req, res) => {
-  Company.findOne({
+exports.deleteLocation = (req, res) => {
+  Location.findOne({
     where: {
-      UserId: req.body.user_id,
-      id: req.params.companyId,
+      CompanyId: req.body.company_id,
+      id: req.params.locationId,
     },
   })
-    .then((result) => {
-      if (!result) {
-        return res.status(404).send({ message: 'Company Not Found' })
-      }
-
-      Company.destroy({
+    .then(() => {
+      Location.destroy({
         where: {
-          id: req.params.companyId,
+          id: req.params.locationId,
         },
       })
         .then(() => {
           return res
             .status(200)
-            .send({ message: 'Company deleted successfully' })
+            .send({ message: 'Location deleted successfully' })
         })
         .catch((error) => {
           res.status(500).send({ message: error.message })
@@ -94,22 +89,21 @@ exports.deleteCompany = (req, res) => {
       res.status(500).send({ message: error.message })
     })
 }
-exports.updateCompany = (req, res) => {
-  Company.update(
+exports.updateLocation = (req, res) => {
+  Location.update(
     {
       name: req.body.name,
-      CNPJ: req.body.cnpj,
-      description: req.body.description,
+      address: req.body.address,
       main_responsible: req.body.user_id,
     },
     {
       where: {
-        id: req.params.companyId,
+        id: req.params.locationId,
       },
     }
   )
     .then(() => {
-      return res.status(200).send({ message: 'Company updated successfully' })
+      return res.status(200).send({ message: 'Location updated successfully' })
     })
     .catch((error) => {
       res.status(500).send({ message: error.message })

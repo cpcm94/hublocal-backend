@@ -5,6 +5,8 @@ const { envConfig } = require('./Config/envConfig')
 const { connectToDb } = require('./connectToDb')
 const AuthRoute = require('./Routes/auth.routes')
 const CompaniesRoute = require('./Routes/companies.routes')
+const LocationsRoute = require('./Routes/locations.routes')
+const TicketsRoute = require('./Routes/tickets.routes')
 
 const app = express()
 const port = envConfig.port
@@ -35,6 +37,8 @@ app.get('/', (req, res) => {
 
 app.use('/api/auth', AuthRoute)
 app.use('/api/companies', CompaniesRoute)
+app.use('/api/locations', LocationsRoute)
+app.use('/api/tickets', TicketsRoute)
 
 app.listen(port, () =>
   console.log(`Hello world app listening on port ${port}!`)
