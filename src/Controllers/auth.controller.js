@@ -8,7 +8,7 @@ exports.signup = (req, res) => {
   User.create({
     username: req.body.username,
     email: req.body.email,
-    password: bcrypt.hashSync(req.body.password, 8),
+    hashedPassword: bcrypt.hashSync(req.body.password, 8),
   })
     .then(() => {
       res.send({ message: 'User was registered successfully!' })
@@ -29,7 +29,7 @@ exports.signin = (req, res) => {
       }
       const passwordIsValid = bcrypt.compareSync(
         req.body.password,
-        user.password
+        user.hashedPassword
       )
       if (!passwordIsValid) {
         return res.status(401).send({

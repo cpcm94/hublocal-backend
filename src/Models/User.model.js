@@ -13,10 +13,8 @@ module.exports = (sequelize, Sequelize) => {
       },
     },
     hashedPassword: {
-      type: Sequelize.STRING(64),
-      validate: {
-        is: /^[0-9a-f]{64}$/i,
-      },
+      type: Sequelize.STRING,
+      allowNull: false,
     },
   })
   return User
