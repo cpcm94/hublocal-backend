@@ -16,4 +16,4 @@ router.use(function (req, res, next) {
 router.post('/signup', checkDuplicateUsernameOrEmail, controller.signup)
 router.post('/signin', controller.signin)
 
-export default router
+module.exports = router
