@@ -12,6 +12,7 @@ connectToDb()
       email: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
         validate: {
           isEmail: true,
         },
@@ -30,8 +31,11 @@ connectToDb()
         allowNull: false,
       },
       CNPJ: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.BIGINT,
         allowNull: false,
+        validate: {
+          len: [14],
+        },
       },
       description: {
         type: DataTypes.STRING,
@@ -62,7 +66,7 @@ connectToDb()
         type: DataTypes.STRING,
         allowNull: false,
       },
-      contactnumber: {
+      contact_number: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },

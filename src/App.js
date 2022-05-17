@@ -4,6 +4,7 @@ const cors = require('cors')
 const { envConfig } = require('./Config/envConfig')
 const { connectToDb } = require('./connectToDb')
 const AuthRoute = require('./Routes/auth.routes')
+const CompaniesRoute = require('./Routes/companies.routes')
 
 const app = express()
 const port = envConfig.port
@@ -33,6 +34,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/auth', AuthRoute)
+app.use('/api/companies', CompaniesRoute)
 
 app.listen(port, () =>
   console.log(`Hello world app listening on port ${port}!`)

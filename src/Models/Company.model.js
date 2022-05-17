@@ -5,8 +5,11 @@ module.exports = (sequelize, Sequelize) => {
       allowNull: false,
     },
     CNPJ: {
-      type: Sequelize.INTEGER,
+      type: Sequelize.BIGINT,
       allowNull: false,
+      validate: {
+        len: [14],
+      },
     },
     description: {
       type: Sequelize.STRING,

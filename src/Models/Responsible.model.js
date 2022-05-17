@@ -4,7 +4,7 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    contactnumber: {
+    contact_number: {
       type: Sequelize.INTEGER,
       allowNull: false,
     },
