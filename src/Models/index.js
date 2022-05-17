@@ -1,5 +1,5 @@
 const { Sequelize } = require('sequelize')
-const { envConfig } = require('./envConfig')
+const { envConfig } = require('../Config/envConfig')
 
 const sequelize = new Sequelize(
   `postgres://${envConfig.postgresUser}:${envConfig.postgresPassword}@${envConfig.postgresHost}:${envConfig.postgresPort}/${envConfig.postgresDatabase}`,
