@@ -9,4 +9,5 @@ exports.envConfig = {
   postgresUser: process.env.POSTGRES_USER,
   postgresPassword: process.env.POSTGRES_PASSWORD,
   port: process.env.PORT || 3000,
+  encodeToken: process.env.ENCONDE_TOKEN,
 }

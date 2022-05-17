@@ -1,7 +1,8 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
-const { envConfig } = require('./envConfig')
+const { envConfig } = require('./Config/envConfig')
+const { connectToDb } = require('./connectToDb')
 
 const app = express()
 const port = envConfig.port
@@ -19,6 +20,14 @@ app.use(bodyParser.json())
 
 app.get('/', (req, res) => {
   res.send('estamos aqui')
+
+  connectToDb()
+  // try {
+  //   await sequelize.authenticate();
+  //   console.log('Connection has been established successfully.');
+  // } catch (error) {
+  //   console.error('Unable to connect to the database:', error);
+  // }
 })
 
 app.listen(port, () =>
