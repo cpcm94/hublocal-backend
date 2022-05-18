@@ -1,7 +1,7 @@
 const { Router } = require('express')
 const {
-  checkDuplicateUsernameOrEmail,
-} = require('../Middleware/checkDuplicateUsernameOrEmail')
+  checkDuplicateUsername,
+} = require('../Middleware/checkDuplicateUsername')
 const controller = require('../Controllers/auth.controller')
 const router = Router()
 
@@ -12,7 +12,7 @@ router.use(function (req, res, next) {
   )
   next()
 })
-router.post('/signup', checkDuplicateUsernameOrEmail, controller.signup)
+router.post('/signup', checkDuplicateUsername, controller.signup)
 router.post('/signin', controller.signin)
 
 module.exports = router
