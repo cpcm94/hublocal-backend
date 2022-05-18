@@ -30,12 +30,14 @@ exports.createCompany = (req, res) => {
     UserId: req.userId,
   })
     .then((result) => {
+      console.log('result ->>>>', result)
       Responsible.bulkCreate(
         req.body.responsibles.map((responsible) => {
           return {
             name: responsible.name,
             contact_number: responsible.contact_number,
             address: responsible.address,
+            CompanyId: result.id,
           }
         })
       )
