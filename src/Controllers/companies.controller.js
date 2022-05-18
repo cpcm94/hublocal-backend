@@ -41,7 +41,7 @@ exports.createCompany = (req, res) => {
       )
         .then(() => console.log('Responsibles created successfully'))
         .catch((error) => console.error(error))
-      return res.status(200).send(result)
+        .finally(() => res.status(200).send(result))
     })
     .catch((error) => {
       res.status(500).send({ message: error.message })
