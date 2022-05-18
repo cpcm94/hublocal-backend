@@ -59,7 +59,7 @@ connectToDb()
         allowNull: false,
       },
       contact_number: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.BIGINT,
         allowNull: false,
       },
       address: {
