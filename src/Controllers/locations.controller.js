@@ -94,7 +94,7 @@ exports.updateLocation = (req, res) => {
     {
       name: req.body.name,
       address: req.body.address,
-      main_responsible: req.body.user_id,
+      main_responsible: req.body.main_responsible,
     },
     {
       where: {

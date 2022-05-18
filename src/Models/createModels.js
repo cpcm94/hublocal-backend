@@ -9,14 +9,6 @@ connectToDb()
         allowNull: false,
         unique: true,
       },
-      email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
-        validate: {
-          isEmail: true,
-        },
-      },
       hashedPassword: {
         type: DataTypes.STRING(64),
         validate: {

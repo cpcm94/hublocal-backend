@@ -23,7 +23,7 @@ exports.createTicket = (req, res) => {
   Ticket.create({
     id: req.body.id,
     title: req.body.title,
-    creator: req.body.user_id,
+    creator: req.userId,
     responder: req.body.responder_id,
     status: req.body.status,
     updated_info: req.body.updated_info,
@@ -83,7 +83,7 @@ exports.updateTicket = (req, res) => {
     {
       id: req.body.id,
       title: req.body.title,
-      creator: req.body.user_id,
+      creator: req.userId,
       responder: req.body.responder_id,
       status: req.body.status,
       updated_info: req.body.updated_info,

@@ -12,9 +12,9 @@ router.use(function (req, res, next) {
   next()
 })
 
-router.post('/', verifyToken, controller.getCompanies)
+router.get('/', verifyToken, controller.getCompanies)
 router.post('/createCompany', verifyToken, controller.createCompany)
-router.post('/:companyId', verifyToken, controller.getCompany)
+router.get('/:companyId', verifyToken, controller.getCompany)
 router.delete('/:companyId', verifyToken, controller.deleteCompany)
 router.put('/:companyId', verifyToken, controller.updateCompany)
 

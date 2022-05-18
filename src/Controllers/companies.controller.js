@@ -6,7 +6,7 @@ const Responsible = db.responsible
 exports.getCompanies = (req, res) => {
   Company.findAll({
     where: {
-      UserId: req.body.user_id,
+      UserId: req.userId,
     },
   })
     .then((companies) => {
@@ -26,7 +26,7 @@ exports.createCompany = (req, res) => {
     CNPJ: req.body.cnpj,
     description: req.body.description,
     main_responsible: req.body.main_responsible,
-    UserId: req.body.user_id,
+    UserId: req.userId,
   })
     .then((result) => {
       Responsible.bulkCreate(
@@ -49,7 +49,7 @@ exports.createCompany = (req, res) => {
 exports.getCompany = (req, res) => {
   Company.findOne({
     where: {
-      UserId: req.body.user_id,
+      UserId: req.userId,
       id: req.params.companyId,
     },
     include: Responsible,
@@ -67,7 +67,7 @@ exports.getCompany = (req, res) => {
 exports.deleteCompany = (req, res) => {
   Company.findOne({
     where: {
-      UserId: req.body.user_id,
+      UserId: req.userId,
       id: req.params.companyId,
     },
   })
@@ -100,7 +100,7 @@ exports.updateCompany = (req, res) => {
       name: req.body.name,
       CNPJ: req.body.cnpj,
       description: req.body.description,
-      main_responsible: req.body.user_id,
+      main_responsible: req.body.main_responsible,
     },
     {
       where: {
