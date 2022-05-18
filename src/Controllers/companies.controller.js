@@ -21,6 +21,8 @@ exports.getCompanies = (req, res) => {
     })
 }
 exports.createCompany = (req, res) => {
+  console.log('req >>>>>>>>>>>>', req)
+  console.log('req.body >>>>>>>>>>', req.body)
   Company.create({
     name: req.body.name,
     CNPJ: req.body.cnpj,
