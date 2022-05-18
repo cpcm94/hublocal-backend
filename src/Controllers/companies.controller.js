@@ -21,11 +21,10 @@ exports.getCompanies = (req, res) => {
     })
 }
 exports.createCompany = (req, res) => {
-  console.log('req >>>>>>>>>>>>', req)
-  console.log('req.body >>>>>>>>>>', req.body)
+  console.log('req.body >>>', req.body)
   Company.create({
     name: req.body.name,
-    CNPJ: req.body.cnpj,
+    CNPJ: parseInt(req.body.CNPJ),
     description: req.body.description,
     main_responsible: req.body.main_responsible,
     UserId: req.userId,
