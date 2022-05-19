@@ -30,7 +30,6 @@ exports.createCompany = (req, res) => {
     UserId: req.userId,
   })
     .then((result) => {
-      console.log('result ->>>>', result)
       Responsible.bulkCreate(
         req.body.responsibles.map((responsible) => {
           return {
@@ -41,9 +40,8 @@ exports.createCompany = (req, res) => {
           }
         })
       )
-        .then(() => console.log('Responsibles created successfully'))
+        .then(() => res.status(200).send(result))
         .catch((error) => console.error(error))
-        .finally(() => res.status(200).send(result))
     })
     .catch((error) => {
       res.status(500).send({ message: error.message })

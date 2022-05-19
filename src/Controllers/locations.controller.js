@@ -34,12 +34,12 @@ exports.createLocation = (req, res) => {
             name: responsible.name,
             contact_number: responsible.contact_number,
             address: responsible.address,
+            LocationId: result.id,
           }
         })
       )
-        .then(() => console.log('Responsibles created successfully'))
+        .then(() => res.status(200).send(result))
         .catch((error) => console.error(error))
-      return res.status(200).send(result)
     })
     .catch((error) => {
       res.status(500).send({ message: error.message })
