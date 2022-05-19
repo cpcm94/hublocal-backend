@@ -2,40 +2,25 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const { envConfig } = require('./Config/envConfig')
-const { connectToDb } = require('./connectToDb')
 const AuthRoute = require('./Routes/auth.routes')
 const CompaniesRoute = require('./Routes/companies.routes')
 const LocationsRoute = require('./Routes/locations.routes')
 const TicketsRoute = require('./Routes/tickets.routes')
+const UsersRoute = require('./Routes/users.route')
 
 const app = express()
 const port = envConfig.port
 
 app.use(cors())
 app.use(bodyParser.json())
-
-// Configuring body parser middleware
 app.use(bodyParser.urlencoded({ extended: true }))
 
-// app.use(bodyParser.json());
-
-// app.post('/book', (req, res) => {
-//     // We will be coding here
-// });
-
 app.get('/', (req, res) => {
-  res.send('estamos aqui')
-
-  // connectToDb()
-  // try {
-  //   await sequelize.authenticate();
-  //   console.log('Connection has been established successfully.');
-  // } catch (error) {
-  //   console.error('Unable to connect to the database:', error);
-  // }
+  res.send('API Hublocal test')
 })
 
 app.use('/api/auth', AuthRoute)
+app.use('/api/users', UsersRoute)
 app.use('/api/companies', CompaniesRoute)
 app.use('/api/locations', LocationsRoute)
 app.use('/api/tickets', TicketsRoute)
