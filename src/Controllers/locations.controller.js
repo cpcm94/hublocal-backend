@@ -2,6 +2,7 @@ const db = require('../Models')
 
 const Location = db.location
 const Responsible = db.responsible
+const Ticket = db.ticket
 
 exports.getLocations = (req, res) => {
   Location.findAll({
@@ -51,6 +52,7 @@ exports.getLocation = (req, res) => {
       CompanyId: req.body.company_id,
     },
     include: Responsible,
+    include: Ticket,
   })
     .then((location) => {
       if (!location) {
