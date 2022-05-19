@@ -27,6 +27,7 @@ exports.createTicket = (req, res) => {
     responder: req.userId,
     status: req.body.status,
     updated_info: req.body.updated_info,
+    LocationId: req.body.location_id,
   })
     .then((result) => {
       return res.status(200).send(result)
