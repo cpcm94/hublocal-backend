@@ -51,8 +51,7 @@ exports.getLocation = (req, res) => {
     where: {
       CompanyId: req.body.company_id,
     },
-    include: Responsible,
-    include: Ticket,
+    include: [Responsible, Ticket],
   })
     .then((location) => {
       if (!location) {
