@@ -55,7 +55,6 @@ exports.getTicket = (req, res) => {
 exports.deleteTicket = (req, res) => {
   Ticket.findOne({
     where: {
-      LocationId: req.body.location_id,
       id: req.params.ticketId,
     },
   })

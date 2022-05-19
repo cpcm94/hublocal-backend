@@ -68,7 +68,6 @@ exports.getLocation = (req, res) => {
 exports.deleteLocation = (req, res) => {
   Location.findOne({
     where: {
-      CompanyId: req.body.company_id,
       id: req.params.locationId,
     },
   })
