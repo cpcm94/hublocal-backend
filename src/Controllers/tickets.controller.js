@@ -24,7 +24,7 @@ exports.createTicket = (req, res) => {
     id: req.body.id,
     title: req.body.title,
     creator: req.userId,
-    responder: req.body.responder_id,
+    responder: req.userId,
     status: req.body.status,
     updated_info: req.body.updated_info,
   })
