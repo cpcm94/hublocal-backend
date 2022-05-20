@@ -25,6 +25,4 @@ app.use('/api/companies', CompaniesRoute)
 app.use('/api/locations', LocationsRoute)
 app.use('/api/tickets', TicketsRoute)
 
-app.listen(port, () =>
-  console.log(`Hello world app listening on port ${port}!`)
-)
+app.listen(port, () => console.log(`App listening on port ${port}!`))
